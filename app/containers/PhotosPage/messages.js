@@ -20,6 +20,10 @@ export default defineMessages({
     id: `${scope}.description`,
     defaultMessage: "Description",
   },
+  title: {
+    id: `${scope}.title`,
+    defaultMessage: "Titre",
+  },
   scaffoldingHeader: {
     id: `${scope}.scaffolding.header`,
     defaultMessage: "Quick scaffolding",

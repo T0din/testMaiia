@@ -9,7 +9,6 @@ import { FormattedMessage } from "react-intl";
 import axios from "axios";
 
 import PropTypes from "prop-types";
-import { makeSelectLoading, makeSelectError } from "containers/App/selectors";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { createStructuredSelector } from "reselect";
@@ -21,13 +20,10 @@ import messages from "./messages";
 import { addItemToCart, removeItemFromCart } from "./actions";
 import { makeSelectCart } from "./selectors";
 import reducer from "./reducer";
-import de from "react-intl/locale-data/de";
 
 const key = "photos";
-
 export function PhotosPage({ cart, onAddItemToCart, onRemoveItemFromCart }) {
   useInjectReducer({ key, reducer });
-  console.log(cart);
   const [arrayOfPhotos, setArrayOfPhotos] = React.useState([]);
   const [pageNumber, setPageNumber] = React.useState(1);
   const [openCart, setOpenCart] = React.useState(false);
@@ -38,7 +34,6 @@ export function PhotosPage({ cart, onAddItemToCart, onRemoveItemFromCart }) {
     return axios
       .get(`http://localhost:3000/photos?_page=${pageForAxios}&_limit=15`)
       .then(function(response) {
-        // handle success
         setArrayOfPhotos(response.data);
       });
   };
@@ -218,6 +213,24 @@ export function PhotosPage({ cart, onAddItemToCart, onRemoveItemFromCart }) {
                     fontWeight: "bold",
                   }}
                 >
+                  <FormattedMessage {...messages.title} />
+                </div>
+                <div
+                  style={{
+                    textAlign: "center",
+                    width: "180px",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {`Id : ${photo.id}`}
+                </div>
+                <div
+                  style={{
+                    fontWeight: "bold",
+                  }}
+                >
                   <FormattedMessage {...messages.description} />
                 </div>
                 <div
@@ -285,8 +298,8 @@ export function PhotosPage({ cart, onAddItemToCart, onRemoveItemFromCart }) {
 }
 
 PhotosPage.propTypes = {
-  cart: PropTypes.array,
   addItemToCart: PropTypes.func,
+  cart: PropTypes.array,
   onRemoveItemFromCart: PropTypes.func,
 };
 
