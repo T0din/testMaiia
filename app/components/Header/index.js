@@ -11,16 +11,21 @@ import messages from "./messages";
 function Header() {
   return (
     <div>
-      <A href="https://www.reactboilerplate.com/">
-        <Img src={Banner} alt="react-boilerplate - Logo" />
+      <A href="https://www.maiia.com/">
+        <Img
+          src={
+            "https://www.cegedim.fr/presse/filiales/docavenue/PublishingImages/DAdevient_RS_large.png"
+          }
+          alt="maiia - Logo"
+        />
       </A>
       <NavBar>
         <HeaderLink to="/">
           <FormattedMessage {...messages.home} />
         </HeaderLink>
-        <HeaderLink to="/features">
+        {/* <HeaderLink to="/features">
           <FormattedMessage {...messages.features} />
-        </HeaderLink>
+        </HeaderLink> */}
         <HeaderLink to="/photos">
           <FormattedMessage {...messages.photos} />
         </HeaderLink>

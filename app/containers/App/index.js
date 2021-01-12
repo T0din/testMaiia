@@ -42,11 +42,10 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
+        {/* <Route path="/features" component={FeaturePage} /> */}
         <Route path="/photos" component={PhotosPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      <Footer />
       <GlobalStyle />
     </AppWrapper>
   );
